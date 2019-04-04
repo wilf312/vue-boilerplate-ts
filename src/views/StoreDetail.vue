@@ -9,7 +9,7 @@
     <p v-if="descriptionValid">エラー {{descriptionValid}}</p>
     <div><input :value="description" @input="updateDescription"></div>
 
-    <button @click="submit">送信</button>
+    <button :disabled="storeNameValid || descriptionValid" @click="submit">送信</button>
   </div>
 </template>
 
@@ -30,11 +30,6 @@ export default class StoreDetail extends Vue {
   get descriptionValid() {
     return storeDetailModule.descriptionValid;
   }
-  private isValid() {
-    let isValid = true
-
-    return isValid
-  }
 
   private updateStoreName(e: any) {
     storeDetailModule.SET_STORE_NAME(e.target.value)
@@ -44,10 +39,7 @@ export default class StoreDetail extends Vue {
   }
 
   private submit() {
-    console.log('valid')
-    if (this.isValid()) {
-      console.log('valid')
-    }
+    console.log('submit')
   }
 }
 </script>
