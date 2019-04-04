@@ -2,11 +2,11 @@
   <div class="Counter">
     <h1>店舗情報 編集</h1>
     <p>店舗名 </p>
-    <p v-if="storeNameError">エラー {{storeNameError}}</p>
+    <p v-if="storeNameValid">エラー {{storeNameValid}}</p>
     <div><input :value="storeName" @input="updateStoreName"></div>
 
     <p>店舗紹介</p>
-    <p v-if="descriptionError">エラー {{descriptionError}}</p>
+    <p v-if="descriptionValid">エラー {{descriptionValid}}</p>
     <div><input :value="description" @input="updateDescription"></div>
 
     <button @click="submit">送信</button>
@@ -18,31 +18,20 @@ import { Component, Vue } from 'vue-property-decorator'
 import { storeDetailModule } from '@/store/page/StoreDetail' // モジュールクラスをインポート
 @Component({})
 export default class StoreDetail extends Vue {
-  public storeNameError = ''
-  public descriptionError = ''
-
   get storeName() {
     return storeDetailModule.storeName;
   }
   get description() {
     return storeDetailModule.description;
   }
+  get storeNameValid() {
+    return storeDetailModule.storeNameValid;
+  }
+  get descriptionValid() {
+    return storeDetailModule.descriptionValid;
+  }
   private isValid() {
     let isValid = true
-
-    if (this.storeName === '') {
-      isValid = false
-      this.storeNameError = '入力してください'
-    } else {
-      this.storeNameError = ''
-    }
-
-    if (this.description === '') {
-      isValid = false
-      this.descriptionError = '入力してください'
-    } else {
-      this.descriptionError = ''
-    }
 
     return isValid
   }

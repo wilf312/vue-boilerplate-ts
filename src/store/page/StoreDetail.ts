@@ -31,6 +31,20 @@ class StoreDetail extends VuexModule implements IStoreDetailState {
     this.SET_STORE_NAME(description);
   }
 
+  get storeNameValid() {
+    return this.storeName !== '' ? undefined : '入力してください'
+  }
+
+  get descriptionValid() {
+    if (this.description === '') {
+      return '入力してください'
+    } else if (this.description.search(/.*ばか|バカ.*/) !== -1) {
+      return '暴言はよくありませんよ'
+    } else {
+      return undefined
+    }
+  }
+
   // actions + mutation
   // incrementCounter decrementCounter両方をリセットするアクションとミューテーション
   @MutationAction({mutate: ['incrementCounter']})
