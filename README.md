@@ -1,5 +1,7 @@
 # vue-boilerplate-ts
 
+https://gifted-bohr-a0c08f.netlify.com/StoreDetail
+
 ## Project setup
 ```
 yarn install
