@@ -16,20 +16,20 @@ class StoreDetail extends VuexModule implements IStoreDetailState {
   @Mutation
   public SET_STORE_NAME(storeName: string) {
     this.storeName = storeName;
-  } 
+  }
   @Mutation
   public SET_DESCRIPTION(description: string) {
     this.description = description;
-  } 
+  }
 
   // actions
   @Action({})
   public setStoreName(storeName: string) {
     this.SET_STORE_NAME(storeName);
-  } 
+  }
   public setDescription(description: string) {
     this.SET_STORE_NAME(description);
-  } 
+  }
 
   // actions + mutation
   // incrementCounter decrementCounter両方をリセットするアクションとミューテーション

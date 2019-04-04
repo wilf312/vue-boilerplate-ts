@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { counterModule } from "@/store/page/Counter"; // モジュールクラスをインポート
+import { counterModule } from '@/store/page/Counter'; // モジュールクラスをインポート
 
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
@@ -31,19 +31,19 @@ export default class Home extends Vue {
   get decrementCounter() {
     return counterModule.decrementCounter; // インテリセンスが
   }
-  increment() {
+  private increment() {
     counterModule.SET_INCREMENT_COUNTER(counterModule.incrementCounter + 1); // 型チェックが効く
   }
-  decrement() {
+  private decrement() {
     counterModule.SET_DECREMENT_COUNTER(counterModule.decrementCounter - 1); // 型チェック
   }
-  increment100() {
+  private increment100() {
     counterModule.increment100(); // インテリセンスが効く
   }
-  decrement100() {
+  private decrement100() {
     counterModule.decrement100(); // インテリセンスが
   }
-  resetCounter() {
+  private resetCounter() {
     counterModule.resetCounter();
   }
 }

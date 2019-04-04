@@ -14,23 +14,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { storeDetailModule } from "@/store/page/StoreDetail"; // モジュールクラスをインポート
-
-
+import { Component, Vue } from 'vue-property-decorator'
+import { storeDetailModule } from '@/store/page/StoreDetail' // モジュールクラスをインポート
 @Component({})
 export default class StoreDetail extends Vue {
-
-  storeNameError = ''
-  descriptionError = ''
+  public storeNameError = ''
+  public descriptionError = ''
 
   get storeName() {
-    return storeDetailModule.storeName;  
+    return storeDetailModule.storeName;
   }
   get description() {
-    return storeDetailModule.description;  
+    return storeDetailModule.description;
   }
-  isValid () {
+  private isValid() {
     let isValid = true
 
     if (this.storeName === '') {
@@ -47,21 +44,21 @@ export default class StoreDetail extends Vue {
       this.descriptionError = ''
     }
 
-    return isValid 
+    return isValid
   }
 
-  updateStoreName (e: any) {
+  private updateStoreName(e: any) {
     storeDetailModule.SET_STORE_NAME(e.target.value)
   }
-  updateDescription (e: any) {
+  private updateDescription(e: any) {
     storeDetailModule.SET_DESCRIPTION(e.target.value)
   }
 
-  submit() {
+  private submit() {
     console.log('valid')
     if (this.isValid()) {
       console.log('valid')
-    } 
+    }
   }
 }
 </script>
