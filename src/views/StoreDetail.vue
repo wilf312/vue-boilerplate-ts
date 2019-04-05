@@ -10,7 +10,8 @@
     <div><input :value="description" @input="updateDescription"></div>
 
     <button :disabled="storeNameValid || descriptionValid" @click="submit">送信</button>
-    <p>{{storeDetail}}</p>
+
+    <button @click="reset">リセット</button>
   </div>
 </template>
 
@@ -53,6 +54,9 @@ export default class StoreDetail extends Vue {
   private submit() {
     console.log('submit')
     storeDetailModule.updateStoreDetail()
+  }
+  private reset() {
+    storeDetailModule.COPY_ORIGIN_TO_EDIT(storeDetailModule.origin)
   }
 }
 </script>

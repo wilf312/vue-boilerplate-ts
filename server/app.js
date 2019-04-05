@@ -31,7 +31,10 @@ let mockdb = {
     description: 'フロントのお仕事うけおいます',
   }
 }
+// 取得 API
 app.get('/storeDetail', (req, res) => res.json(mockdb.storeDetail))
+
+// 更新 API
 app.put('/storeDetail', (req, res) => {
   let data = {}
   data['storeName'] = req.body.storeName || mockdb.storeDetail.storeName
