@@ -10,25 +10,37 @@
     <div><input :value="description" @input="updateDescription"></div>
 
     <button :disabled="storeNameValid || descriptionValid" @click="submit">送信</button>
+    <p>{{storeDetail}}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { storeModule } from '@/store/api/store' // モジュールクラスをインポート
 import { storeDetailModule } from '@/store/page/StoreDetail' // モジュールクラスをインポート
+
+console.log(storeDetailModule)
 @Component({})
 export default class StoreDetail extends Vue {
   get storeName() {
-    return storeDetailModule.storeName;
+    return storeDetailModule.edit.storeName;
   }
   get description() {
-    return storeDetailModule.description;
+    return storeDetailModule.edit.description;
   }
   get storeNameValid() {
     return storeDetailModule.storeNameValid;
   }
   get descriptionValid() {
     return storeDetailModule.descriptionValid;
+  }
+
+  get storeDetail() {
+    return storeDetailModule.origin;
+  }
+
+  mounted() {
+    storeDetailModule.pageInit()
   }
 
   private updateStoreName(e: any) {
@@ -40,6 +52,16 @@ export default class StoreDetail extends Vue {
 
   private submit() {
     console.log('submit')
+    storeDetailModule.updateStoreDetail()
   }
 }
 </script>
+
+
+<style>
+
+input {
+  width: 100%;
+}
+
+</style>

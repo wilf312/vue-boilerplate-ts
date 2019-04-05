@@ -1,57 +1,92 @@
 import { Mutation, MutationAction, Action, VuexModule, getModule, Module } from 'vuex-module-decorators'
 import store from '@/store/'; // デコレータでstoreを指定するためimportする必要あり
+import {storeModule} from '@/store/api/store'; // デコレータでstoreを指定するためimportする必要あり
 
 // state's interface
 export interface IStoreDetailState {
-  incrementCounter: number; // 数字が増えてくカウンター
+  editInitial: IStoreDetail
+  edit: IStoreDetail
+}
+
+type IStoreDetail = {
+  storeId: number
+  storeName: string
+  description: string
 }
 @Module({ dynamic: true, store, name: 'StoreDetail', namespaced: true })
 class StoreDetail extends VuexModule implements IStoreDetailState {
   // state
-  public incrementCounter: number = 0;
-  public storeName: string = 'tests';
-  public description: string = 'tests';
+  public editInitial: IStoreDetail = {
+    storeId: -1,
+    storeName: '',
+    description: '',
+  }
+  public edit: IStoreDetail = {
+    ...this.editInitial,
+  }
 
   // mutation
   @Mutation
   public SET_STORE_NAME(storeName: string) {
-    this.storeName = storeName;
+    this.edit.storeName = storeName;
   }
   @Mutation
   public SET_DESCRIPTION(description: string) {
-    this.description = description;
+    this.edit.description = description;
   }
+  @Mutation
+  public COPY_ORIGIN_TO_EDIT(storeDetail: any) {
+    this.edit = {
+      storeId: storeDetail.storeId || this.editInitial.storeId,
+      storeName: storeDetail.storeName || this.editInitial.storeName,
+      description: storeDetail.description || this.editInitial.description,
+    };
+  }
+
+
 
   // actions
   @Action({})
-  public setStoreName(storeName: string) {
-    this.SET_STORE_NAME(storeName);
+  public async pageInit() {
+    try {
+      await storeModule.fetchStoreDetail()
+      console.log(this.origin)
+
+      // コピー
+      this.COPY_ORIGIN_TO_EDIT(this.origin)
+
+    } catch (e) {
+      alert('読み込みに失敗しました 再読込します')
+      location.reload()
+    }
   }
-  public setDescription(description: string) {
-    this.SET_STORE_NAME(description);
+  @Action({})
+  public updateStoreDetail() {
+    storeModule.updateStoreDetail({
+      storeName: this.edit.storeName,
+      description: this.edit.description,
+    });
   }
 
+
+
+
   get storeNameValid() {
-    return this.storeName !== '' ? undefined : '入力してください'
+    return this.edit.storeName !== '' ? undefined : '入力してください'
   }
 
   get descriptionValid() {
-    if (this.description === '') {
+    if (this.edit.description === '') {
       return '入力してください'
-    } else if (this.description.search(/.*ばか|バカ.*/) !== -1) {
+    } else if (this.edit.description.search(/.*ばか|バカ.*/) !== -1) {
       return '暴言はよくありませんよ'
     } else {
       return undefined
     }
   }
 
-  // actions + mutation
-  // incrementCounter decrementCounter両方をリセットするアクションとミューテーション
-  @MutationAction({mutate: ['incrementCounter']})
-  public async resetCounter() {
-    return {
-      incrementCounter: 0,
-    };
+  get origin() {
+    return storeModule.storeDetail
   }
 }
 
