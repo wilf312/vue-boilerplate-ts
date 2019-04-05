@@ -7,6 +7,11 @@ https://gifted-bohr-a0c08f.netlify.com/StoreDetail
 yarn install
 ```
 
+## API Server
+```
+yarn api
+```
+
 ### Compiles and hot-reloads for development
 ```
 yarn run serve

@@ -4,7 +4,7 @@ import store from '@/store/'; // デコレータでstoreを指定するためimp
 
 const API = 'http://localhost:9999/storeDetail'
 
-type IupdateStoreDetail = {
+interface IupdateStoreDetail {
   storeName: string
   description: string
 }
