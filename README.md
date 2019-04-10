@@ -1,4 +1,5 @@
-# vue-boilerplate-ts [![Netlify Status](https://api.netlify.com/api/v1/badges/69e6b234-6696-4f80-9203-4eaa4ae03378/deploy-status)](https://app.netlify.com/sites/gifted-bohr-a0c08f/deploys)
+# vue-boilerplate-ts [![Netlify Status](https://api.netlify.com/api/v1/badges/69e6b234-6696-4f80-9203-4eaa4ae03378/deploy-status)](https://app.netlify.com/sites/gifted-bohr-a0c08f/deploys) [![Greenkeeper badge](https://badges.greenkeeper.io/wilf312/json2jsObject.svg)](https://greenkeeper.io/)
+
 
 https://gifted-bohr-a0c08f.netlify.com/StoreDetail
 
