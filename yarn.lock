@@ -9253,10 +9253,15 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-class-component@^7.0.1, vue-class-component@^7.0.2:
+vue-class-component@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.0.2.tgz#c5f35a91c0e9341532392b84d606a84911fb13bc"
   integrity sha512-8xw/wkZI2tgHcwvkSRC1ax7GeP1CG27wKhedvOAdjdASm05VU4RijGsCYti6s6CzBioBL5BQUmntQQTCsp1wnQ==
+
+vue-class-component@^7.1.0:
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.2.3.tgz#a5b1abd53513a72ad51098752e2dedd499807cca"
+  integrity sha512-oEqYpXKaFN+TaXU+mRLEx8dX0ah85aAJEe61mpdoUrq0Bhe/6sWhyZX1JjMQLhVsHAkncyhedhmCdDVSasUtDw==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.3"
@@ -9290,12 +9295,12 @@ vue-loader@^15.6.4:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-property-decorator@^8.0.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-8.1.0.tgz#66493a5350e7f643e852e7698ec2c883554daa79"
-  integrity sha512-TUWpbadApSW/sx9hlbrUq092ULm4E3RkL5X4fFhkiJ88/Y99lVubjh3bd3VbFQ8JRlKaTeqMOKaFHQRzWBCFPg==
+vue-property-decorator@^8.4.1:
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-8.4.1.tgz#fd8045b8678e1348fed57f9149279e00e404ed38"
+  integrity sha512-8R4Us7DxFO0rwAL/2fv6vaZL8Oa4n/HGanHODYGTcvQHwT0FYJr9UuuFm2GoWAIXQu1mDO03HNeHswFp9vmTVA==
   dependencies:
-    vue-class-component "^7.0.1"
+    vue-class-component "^7.1.0"
 
 vue-router@^3.0.1:
   version "3.0.2"
